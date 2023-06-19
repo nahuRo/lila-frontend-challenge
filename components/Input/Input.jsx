@@ -9,7 +9,6 @@ const Input = ({ handleChange, className, label, errorMessage, ...props }) => {
       {label && <label className={styles.label}>{label}</label>}
       <input
         {...props}
-        // con 'cn' uno las clases
         className={cn(styles.input, styles[props.size], className)}
         onChange={handleChange}
       />
@@ -18,15 +17,12 @@ const Input = ({ handleChange, className, label, errorMessage, ...props }) => {
   );
 };
 
-// son los valores por defecto de las prosp, en caso de no pasarle esa prop al componente va a tomar el valor que declaremos
-// en defautlProps
 Input.defaultProps = {
   handleChange: () => {},
   errorMessage: '',
   label: '',
 };
 
-// es para tipar las props, como 'agregarles' ts a las props
 Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,

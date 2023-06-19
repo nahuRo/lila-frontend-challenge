@@ -2,9 +2,6 @@ import Head from 'next/head';
 import AppProvider from 'utils/context';
 import 'styles/globals.css';
 
-// *** _APP -> ESTE COMPONENTE ES UN COMPONENTE QUE ENVUELVE AL INDEX
-// ES UN TIPO LAYOUT DE NEXT 13, LAGO PARECIDO
-
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -14,7 +11,6 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="favicon.ico" />
       </Head>
 
-      {/* el Provider del context, para compartir estados en la app */}
       <AppProvider>
         <Component {...pageProps} />
       </AppProvider>
