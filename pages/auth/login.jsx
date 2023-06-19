@@ -13,6 +13,8 @@ const Login = () => {
   const { login } = useLoginContext();
   const router = useRouter();
 
+  const [resApi, setResApi] = useState('');
+
   useEffect(() => {
     router.prefetch('/');
   }, []);
@@ -28,14 +30,16 @@ const Login = () => {
     if (ok) {
       setSuccess(true);
       // ToDo: Redirect the user to the home page after a successful login.
+      router.push('/');
     } else {
       // ToDo: If the login fails, show the error message returned from the api to the user.
+      setResApi(data);
     }
   };
 
   return (
     <div className={styles.main}>
-      <Img src={imgLogo} alt="Logo" className={styles.logo} />
+      <Img src={imgLogo} alt="Logo" className={styles.logo} priority />
       <Input
         className={styles.input}
         label="Email"
@@ -53,7 +57,11 @@ const Login = () => {
         handleChange={handleChange}
         size="large"
       />
-      {success && <p className={styles.success}>Ingreso exitoso</p>}
+      {success ? (
+        <p className={styles.success}>Ingreso exitoso</p>
+      ) : (
+        <p className={styles.error}>{resApi}</p>
+      )}
       <Button
         className={styles.button}
         disabled={Object.values(form).some((val) => val === '')}

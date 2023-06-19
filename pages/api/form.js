@@ -1,6 +1,6 @@
 import { isDevelopment } from 'services/constants';
 
-const DEBUG_ENABLED = false; // Switch this variable whenever you need to debug API Route locally to see logs.
+const DEBUG_ENABLED = true; // Switch this variable whenever you need to debug API Route locally to see logs.
 
 const log = (...args) => {
   if (isDevelopment && DEBUG_ENABLED) console.log(...args);
